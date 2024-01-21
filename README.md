@@ -1,2 +1,3 @@
 # dragonValid
-A Go data validation toolki
+🌈🌈A Go data validation toolkit
+
