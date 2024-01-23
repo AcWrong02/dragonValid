@@ -3,6 +3,7 @@ package dragonvalid
 import (
 	"container/list" //see https://www.topgoer.cn/docs/golangstandard/golangstandard-1cmkstg63ir38
 	"errors"
+	"fmt"
 	"strconv"
 )
 
@@ -54,7 +55,7 @@ func Text(value string, name ...string) Engine {
 func (v Engine) Required(customError ...string) Engine {
 	return pushQueue(&v, func(v *Engine) *Engine {
 		if v.value == "" {
-			v.err = setError(v, "不能为空", customError...)
+			v.err = setError(v, "不能为空啊啊啊", customError...)
 		}
 		return v
 	})
@@ -65,7 +66,9 @@ func pushQueue(v *Engine, fn queueT, DisableCheckErr ...bool) Engine {
 	pFn := fn
 	if !(len(DisableCheckErr) > 0 && DisableCheckErr[0]) {
 		pFn = func(v *Engine) *Engine {
+			// fmt.Print("checking v---", v)
 			if v.err != nil {
+				fmt.Print("checking v.err: ", v.err)
 				return v
 			}
 			return fn(v)

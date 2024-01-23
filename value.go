@@ -1,6 +1,8 @@
 package dragonvalid
 
-import "container/list"
+import (
+	"container/list"
+)
 
 // Error or whether the verification fails
 func (v Engine) Error() error {

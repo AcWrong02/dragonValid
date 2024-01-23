@@ -3,7 +3,6 @@ package dragonvalid
 import "testing"
 
 func TestValidRule(t *testing.T) {
-	v := Text("123").Required().hasLetter()
-	err := v.Error()
-	t.Log("err---", err)
+	v := Text("").Required().hasLetter()
+	t.Log(v.err)
 }
